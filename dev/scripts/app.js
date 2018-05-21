@@ -2,44 +2,60 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Wine from './wine';
 import Tip from './tip';
+import firebase from 'firebase';
 
 //Set up my firebase connection
-// const config = {
-//   apiKey: "AIzaSyDrKjzjM4WQOkSpivFbN9SNURmkTTiHsUw",
-//   authDomain: "egreccoswine.firebaseapp.com",
-//   databaseURL: "https://egreccoswine.firebaseio.com",
-//   projectId: "egreccoswine",
-//   storageBucket: "egreccoswine.appspot.com",
-//   messagingSenderId: "701628731960"
-// };
-// firebase.initializeApp(config);
+const config = {
+  apiKey: "AIzaSyDrKjzjM4WQOkSpivFbN9SNURmkTTiHsUw",
+  authDomain: "egreccoswine.firebaseapp.com",
+  databaseURL: "https://egreccoswine.firebaseio.com",
+  projectId: "egreccoswine",
+  storageBucket: "egreccoswine.appspot.com",
+  messagingSenderId: "701628731960"
+};
+
+firebase.initializeApp(config);
 
 
 class App extends React.Component {
     constructor() {
       super();
       this.state = {
-        value: 'dinner'
+        btnChoice: 'dinner',
+        suggestion: null
       }
     
       this.handleSubmit = this.handleSubmit.bind(this);
       this.handleChange = this.handleChange.bind(this);
     }
 
-    // componentDidMount() {
-    //   const dbRef = firebase.database().ref()
-    // }
+    componentDidMount() {
+      const dbRef = firebase.database().ref();
+      dbRef.once('value')
+        .then((snapshot) => {
+          console.log(snapshot.val());
+        });    
+    }
+
+    getSuggestion(btnChoice) {
+      const dbRef = firebase.database().ref(btnChoice);
+      dbRef.once('value')
+        .then((snapshot) => {
+          console.log(snapshot.val());
+        }); 
+    }
 
     handleChange(event) {
-      this.setState({value: event.target.value});
-      console.log({value: event.target.value});
+      this.setState({btnChoice: event.target.value});
     }
 
     handleSubmit(event) {
       event.preventDefault();
       console.log('Submit was pressed');
-      console.log(this.state);
+      // console.log(this.state);
+      console.log(this.state.btnChoice);
 
+      this.getSuggestion(this.state.btnChoice);
     }
   
     render() {
@@ -63,7 +79,7 @@ class App extends React.Component {
             <input type="submit" value="Submit" />
           </form>
 
-          <Wine />
+          <Wine suggestion={this.state.suggestion} />
           <Tip />
         </div>
       )

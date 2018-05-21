@@ -1,5 +1,19 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import Wine from './wine';
+import Tip from './tip';
+
+//Set up my firebase connection
+// const config = {
+//   apiKey: "AIzaSyDrKjzjM4WQOkSpivFbN9SNURmkTTiHsUw",
+//   authDomain: "egreccoswine.firebaseapp.com",
+//   databaseURL: "https://egreccoswine.firebaseio.com",
+//   projectId: "egreccoswine",
+//   storageBucket: "egreccoswine.appspot.com",
+//   messagingSenderId: "701628731960"
+// };
+// firebase.initializeApp(config);
+
 
 class App extends React.Component {
     constructor() {
@@ -12,6 +26,10 @@ class App extends React.Component {
       this.handleChange = this.handleChange.bind(this);
     }
 
+    // componentDidMount() {
+    //   const dbRef = firebase.database().ref()
+    // }
+
     handleChange(event) {
       this.setState({value: event.target.value});
       console.log({value: event.target.value});
@@ -20,16 +38,16 @@ class App extends React.Component {
     handleSubmit(event) {
       event.preventDefault();
       console.log('Submit was pressed');
+      console.log(this.state);
+
     }
-  
-  
   
     render() {
       return (
         <div>
           <h1>Emily Gilmore Reccomends Wine</h1>
           <form onSubmit={this.handleSubmit}>
-            <label>
+            <label className='eventQuestion'>
               What kind of event are you attending?
               <select value={this.state.value} onChange={this.handleChange}>
                 {/* Something to drink together, crowd-pleaser */}
@@ -44,6 +62,9 @@ class App extends React.Component {
             </label>
             <input type="submit" value="Submit" />
           </form>
+
+          <Wine />
+          <Tip />
         </div>
       )
     }

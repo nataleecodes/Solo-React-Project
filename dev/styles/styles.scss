@@ -6,23 +6,23 @@
     display: flex;
 }
 
-.row {
-    flex-flow: row wrap;
-}
+// .row {
+//     flex-flow: row wrap;
+// }
 
 .col {
     flex-flow: column wrap;
-    align-content: center;
+    align-items: center;
 }
 
-.reponseRow {
-    align-content: center;
-}
+// .reponseRow {
+//     align-content: center;
+// }
 
 .speechBubble {
     background: white;
     border-radius: 10px;
-    width: 60%;
+    width: 400px;
     max-width: 500px;
     height: 60%;
     margin: 3rem 0 0 3rem;
@@ -34,15 +34,57 @@
     object-fit: contain;
 }
 
-@media (max-width: 800px) {
+.emilyCloseUp{
+    display: none;
+}
+
+@media (max-width: 930px) {
     .speechBubble {
-        width: 50%;
+        width: 215px;
+        margin: 1rem 0 0 1rem;
+        height: 98%;
+    }
+    .emilyPic{
+        display: none;
+    }
+    .emilyCloseUp{
+        display: block;
+        object-fit: contain;
     }
 }
 
 @media (max-width: 700px) {
-    .label, select, input {
-        font-size: 2rem;
+    .eventQuestion {
+        font-size: 2.5vw;
     }
+    .emilyCloseUp {
+        max-width: 35%;
+    }
+    .speechBubble{
+        padding: 1.5rem;
+        p {
+            font-size: 1.5rem;
+        }
+    }
+}
 
+@media (max-width: 400px) {
+    h1 {
+        font-size: 9vw;
+        text-align: center;
+    } 
+    .eventQuestion,
+    select,
+    input[type="submit"] {
+        font-size: 4vw;
+        margin: 10px 0;
+    }
+    form {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    }
+    .speechBubble {
+        width: 174px;
+    }
 }

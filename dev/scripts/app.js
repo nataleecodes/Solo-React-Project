@@ -85,7 +85,8 @@ class App extends React.Component {
           </form>
 
           <div className="flex-container row responseRow">
-            <img src="/public/assets/emily3.png" className="emilyPic"/>
+            <img src="/public/assets/emily3.png" className="emilyPic" alt="Emily Gilmore standing with her arms crossed looking severe"/>
+            <img src="/public/assets/emily3-closeup.png" className="emilyCloseUp" alt="Emily Gilmore with her arms crossed looking severe"/>
             <div className="speechBubble">
               <Wine suggestion={this.state.suggestion} />
               <Tip tip={this.state.tip} />

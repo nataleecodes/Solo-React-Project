@@ -16,7 +16,7 @@ const config = {
 
 firebase.initializeApp(config);
 
-
+//Main app component
 class App extends React.Component {
     constructor() {
       super();
@@ -30,14 +30,7 @@ class App extends React.Component {
       this.handleChange = this.handleChange.bind(this);
     }
 
-    // componentDidMount() {
-    //   const dbRef = firebase.database().ref();
-    //   dbRef.once('value')
-    //     .then((snapshot) => {
-    //       console.log(snapshot.val());
-    //     });    
-    // }
-
+    //Get user input and update state to select wine recco & snarky quote
     getSuggestion(btnChoice) {
       const dbRef = firebase.database().ref(btnChoice);
       dbRef.once('value')
@@ -56,10 +49,12 @@ class App extends React.Component {
         })
     }
 
+    //Listen for changes to dropdown menu for user input
     handleChange(event) {
       this.setState({btnChoice: event.target.value});
     }
 
+    //Lisen for submit button press & call getSuggestion to fetch reccos from DB
     handleSubmit(event) {
       event.preventDefault();
       console.log('Submit was pressed');
@@ -69,6 +64,7 @@ class App extends React.Component {
       this.getSuggestion(this.state.btnChoice);
     }
   
+    //Render static header, dropdown, and dynamic content in the browser
     render() {
       return (
         <div className="flex-container col">
@@ -84,6 +80,7 @@ class App extends React.Component {
             <input type="submit" value="Submit" />
           </form>
 
+          {/* Display response info from Firebase database */}
           <div className="flex-container row responseRow">
             <img src="/public/assets/emily3.png" className="emilyPic" alt="Emily Gilmore standing with her arms crossed looking severe"/>
             <img src="/public/assets/emily3-closeup.png" className="emilyCloseUp" alt="Emily Gilmore with her arms crossed looking severe"/>

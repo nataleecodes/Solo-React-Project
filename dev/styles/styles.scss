@@ -2,22 +2,18 @@
 @import 'utils';
 @import 'typography';
 
+/*==========================
+GLOBAL STYLES
+==========================*/
+
 .flex-container {
     display: flex;
 }
-
-// .row {
-//     flex-flow: row wrap;
-// }
 
 .col {
     flex-flow: column wrap;
     align-items: center;
 }
-
-// .reponseRow {
-//     align-content: center;
-// }
 
 .speechBubble {
     background: white;
@@ -37,6 +33,11 @@
 .emilyCloseUp{
     display: none;
 }
+
+
+/*==========================
+MEDIA QUERIES
+==========================*/
 
 @media (max-width: 930px) {
     .speechBubble {

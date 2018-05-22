@@ -2,15 +2,41 @@ html {
     font-size: 62.5%;
 }
 
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: $wine; 
+}
+
 h1 {
-    color: red;
-    font-size: 6vw;
+    // font-family: 'Abhaya Libre', serif;
+    color: $yellow;
+    font-size: 5vw;
+    .cursive {
+        font-family: 'Dancing Script', cursive;
+        color: $red;
+    }
 }
 
 p {
+    font-size: 2rem;
+}
+
+.eventQuestion, 
+select,
+input[type='submit'] {
     font-size: 2vw;
 }
 
-.eventQuestion {
-    font-size: 3vw;
+label {
+    padding-right: 1vw;
+    color: #fafafa;
+}
+
+input[type='submit'] {
+    border: none;
+    background: $yellow;
+}
+
+.snark {
+    color: darkslategray;
 }

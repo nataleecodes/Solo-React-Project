@@ -1,9 +1,12 @@
 import React from 'react';
 
 const Tip = (props) => {
+    if (props.tip === null) {
+        return null;
+    }
     return (
         <div>
-            <p>Remember, {props.tip}</p>
+            <p className="snark"><em>{props.tip}</em></p>
         </div>
     )
 }

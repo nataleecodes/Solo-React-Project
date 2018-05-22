@@ -1,9 +1,12 @@
 import React from 'react';
 
 const Wine = (props) => {
+    if (props.suggestion === null) {
+        return null;
+    }
     return (
         <div>
-            <p>You should bring a bottle of {props.suggestion}.</p>
+            <p>You should bring {props.suggestion}</p>
         </div>
     )
 }

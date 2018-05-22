@@ -67,7 +67,7 @@ class App extends React.Component {
     //Render static header, dropdown, and dynamic content in the browser
     render() {
       return (
-        <div className="flex-container col">
+        <div className="flex-container col header">
           <h1>Emily Gilmore <span className="cursive">Recommends Wine</span></h1>
           <form onSubmit={this.handleSubmit}>
             <label className='eventQuestion'>What kind of event are you attending?</label>

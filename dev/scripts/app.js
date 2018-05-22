@@ -35,7 +35,6 @@ class App extends React.Component {
       const dbRef = firebase.database().ref(btnChoice);
       dbRef.once('value')
         .then((snapshot) => {
-          console.log(snapshot.val());
           this.setState({suggestion: snapshot.val()});
         });     
 
@@ -43,7 +42,6 @@ class App extends React.Component {
       tipRef.once('value')
         .then((snapshot) => {
           let tips = snapshot.val();
-          console.log(tips);
           const tipNumber = Math.floor(Math.random() * tips.length);
           this.setState({ tip: tips[tipNumber] });
         })
@@ -57,10 +55,6 @@ class App extends React.Component {
     //Lisen for submit button press & call getSuggestion to fetch reccos from DB
     handleSubmit(event) {
       event.preventDefault();
-      console.log('Submit was pressed');
-      // console.log(this.state);
-      console.log(this.state.btnChoice);
-
       this.getSuggestion(this.state.btnChoice);
     }
   
